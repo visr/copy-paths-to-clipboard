@@ -1,0 +1,9 @@
+[package]
+name = "copy-paths-to-clipboard"
+version = "1.0.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "A Total Commander helper that copies selected paths to the clipboard, double-quoted and with forward slashes"
+
+[dependencies]
+clipboard-win = "5.4.1"
