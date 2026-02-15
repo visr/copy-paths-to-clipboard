@@ -2,6 +2,8 @@
 
 A Total Commander helper that copies selected paths to the clipboard, double-quoted and with forward slashes.
 
+See https://ghisler.ch/board/viewtopic.php?t=52797.
+
 ## Total Commander Setup
 
 Add two custom commands via **Configuration → Options → Misc. → Redefine Hotkeys**.
