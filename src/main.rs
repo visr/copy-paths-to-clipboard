@@ -4,17 +4,31 @@ use clipboard_win::{formats, set_clipboard};
 use std::env;
 
 fn main() {
-    let args: Vec<String> = env::args().skip(1).collect();
-    if args.is_empty() {
-        eprintln!("Usage: copy-paths-to-clipboard <path1> [path2] ...");
+    let mut quote = false;
+    let mut paths: Vec<String> = Vec::new();
+
+    for arg in env::args().skip(1) {
+        if arg == "--quote" {
+            quote = true;
+        } else {
+            paths.push(arg);
+        }
+    }
+
+    if paths.is_empty() {
+        eprintln!("Usage: copy-paths-to-clipboard [--quote] <path1> [path2] ...");
         std::process::exit(1);
     }
 
-    let result: Vec<String> = args
+    let result: Vec<String> = paths
         .iter()
         .map(|p| {
             let forward = p.replace('\\', "/");
-            format!("\"{}\"", forward)
+            if quote {
+                format!("\"{}\"", forward)
+            } else {
+                forward
+            }
         })
         .collect();
 
